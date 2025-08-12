@@ -1,9 +1,36 @@
-import ChatInterface from '@/components/chat/chat-interface';
 
-export default function Home() {
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+
+export default function IntegrationPage() {
+  const iframeCode = `
+<iframe
+  src="YOUR_CHAT_APP_URL"
+  width="450"
+  height="650"
+  style="border:none; border-radius: 1rem; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);"
+  title="Get in Touch with us Chat"
+>
+</iframe>
+  `.trim();
+
   return (
-    <main className="flex items-center justify-center h-screen bg-background text-foreground md:p-4">
-      <ChatInterface />
+    <main className="flex items-center justify-center min-h-screen bg-background text-foreground p-4">
+      <Card className="w-full max-w-2xl">
+        <CardHeader>
+          <CardTitle>Integrate with your website</CardTitle>
+          <CardDescription>
+            To add this chat bot to your website at <a href="https://rankadz.com/" target="_blank" rel="noopener noreferrer" className="text-primary underline">https://rankadz.com/</a>, copy and paste the following code into your website&apos;s HTML. 
+            You must replace <strong>https://my-cgatbot.vercel.app/</strong> with the live URL you get after deploying this chat application.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <pre className="p-4 bg-muted rounded-lg overflow-x-auto">
+            <code className="text-sm text-muted-foreground">
+              {iframeCode}
+            </code>
+          </pre>
+        </CardContent>
+      </Card>
     </main>
   );
 }
